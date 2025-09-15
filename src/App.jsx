@@ -8,6 +8,9 @@ import Home from "./pages/Home";
 import { useSelector } from "react-redux";
 import Login from "./pages/Login";
 import MainLayout from "./layouts/MainLayout";
+import Register from "./pages/Register";
+import ShoppingCard from "./pages/ShoppingCard";
+import Profile from "./pages/Profile";
 
 export default function App() {
   const { user } = useSelector((state) => state.auth);
@@ -29,6 +32,18 @@ export default function App() {
     {
       path: "/login",
       element: user ? <Navigate to={"/"} replace /> : <Login />,
+    },
+    {
+      path: "/register",
+      element: <Register />,
+    },
+    {
+      path: "/shoppingCard",
+      element: user ? <ShoppingCard /> : <Navigate to={"/login"} replace />,
+    },
+    {
+      path: "/profile",
+      element: <Profile />,
     },
   ]);
   return <RouterProvider router={routes} />;

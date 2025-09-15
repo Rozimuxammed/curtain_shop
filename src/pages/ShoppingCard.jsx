@@ -1,9 +1,10 @@
 import Navbar from "../components/Navbar";
 
-export default function Login() {
+export default function ShoppingCard() {
   return (
     <>
       <Navbar />
+      ShoppingCard
     </>
   );
 }
