@@ -8,7 +8,7 @@ export default function Navbar() {
   const { pathname } = useLocation();
 
   return (
-    <nav>
+    <nav className="fixed top-0 left-0 w-full border-b bg-white z-50">
       <div className="container mx-auto py-4 flex items-center justify-between">
         <div className="flex items-center gap-2.5">
           <Blinds className="text-[#f67a3d] w-10 h-10" />

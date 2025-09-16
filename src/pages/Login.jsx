@@ -13,11 +13,12 @@ import { Eye, EyeOff } from "lucide-react";
 import Navbar from "../components/Navbar";
 import { isValidation } from "../validation";
 import { toast } from "sonner";
+import { Link } from "react-router-dom";
 
 export default function LoginForm() {
-  const [showPassword, setShowPassword] = useState(false);
+    const [showPassword, setShowPassword] = useState(false);
 
-  function handleSubmit(e) {
+    function handleSubmit(e) {
     e.preventDefault();
     const formData = new FormData(e.target);
     const resData = {};
@@ -42,7 +43,7 @@ export default function LoginForm() {
     <>
       <Navbar />
       <div className="flex items-center justify-center h-screen">
-        <Card className="w-full h-[440px] max-w-sm text-center">
+        <Card className="w-full h-[460px] max-w-sm text-center">
           <CardHeader>
             <CardTitle className="text-2xl font-bold">
               Qaytib kelganingizdan xursandmiz
@@ -96,6 +97,12 @@ export default function LoginForm() {
               >
                 Kirish
               </Button>
+              <div className="text-sm text-muted-foreground mt-4">
+                Akkauntingiz yo'qmi? 
+                <Link to="/register" className="text-blue-500 hover:underline ml-1">
+                 Ro'yxatdan o'tish
+                </Link>
+        </div>
             </form>
           </CardContent>
         </Card>
