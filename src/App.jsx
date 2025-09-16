@@ -37,7 +37,7 @@ export default function App() {
     },
     {
       path: "/register",
-      element: <Register />,
+      element: user ? <Navigate to={"/"}/> : <Register />,
     },
     {
       path: "/shoppingCard",

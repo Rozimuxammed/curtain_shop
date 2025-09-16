@@ -14,10 +14,13 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { isValidation } from "../validation";
 import { toast } from "sonner";
+import { useDispatch } from "react-redux";
+import { setUser } from "../states/auth-slice";
 
 export default function Register() {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const dispatch = useDispatch()
   function hundleSubmit(e) {
     e.preventDefault();
     const formData = new FormData(e.target);
@@ -33,7 +36,7 @@ export default function Register() {
       e.target[target].focus();
       toast.error(message)
     }else{
-      console.log(resData);
+      dispatch(setUser(resData));
       e.target.reset();
     }
 
