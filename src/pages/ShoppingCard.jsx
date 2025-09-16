@@ -4,7 +4,9 @@ export default function ShoppingCard() {
   return (
     <>
       <Navbar />
-      ShoppingCard
+      <div className="mt-24">
+        ShoppingCard
+      </div>
     </>
   );
 }

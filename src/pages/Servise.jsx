@@ -4,7 +4,9 @@ export default function Servise() {
   return (
     <>
       <Navbar />
-      Servise
+      <div className="mt-24">
+        Servise
+      </div>
     </>
   );
 }

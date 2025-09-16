@@ -4,7 +4,9 @@ export default function Profile() {
   return (
     <>
       <Navbar />
-      Profile
+      <div className="mt-24">
+        Profile
+      </div>
     </>
   );
 }

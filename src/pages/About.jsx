@@ -4,7 +4,9 @@ export default function About() {
   return (
     <>
       <Navbar />
-      About 
+      <div className="mt-24">
+        About page
+      </div>
     </>
   );
 }
