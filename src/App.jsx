@@ -11,6 +11,8 @@ import MainLayout from "./layouts/MainLayout";
 import Register from "./pages/Register";
 import ShoppingCard from "./pages/ShoppingCard";
 import Profile from "./pages/Profile";
+import Servise from "./pages/Servise";
+import About from "./pages/About";
 
 export default function App() {
   const { user } = useSelector((state) => state.auth);
@@ -44,6 +46,14 @@ export default function App() {
     {
       path: "/profile",
       element: <Profile />,
+    },
+    {
+      path: "/servise",
+      element: <Servise />,
+    },
+    {
+      path: "/about",
+      element: <About />,
     },
   ]);
   return <RouterProvider router={routes} />;

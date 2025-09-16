@@ -2,6 +2,7 @@ import { Blinds, ShoppingCart, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
+
 export default function Navbar() {
   const { user } = useSelector((state) => state.auth);
   const { pathname } = useLocation();
@@ -15,6 +16,14 @@ export default function Navbar() {
             <Link to={"/"}>Curtain shop</Link>
           </h1>
         </div>
+        <ul className="flex items-center gap-6 text-[18px]">
+          <li>
+            <Link to={"/servise"}>Servis xizmati</Link>
+          </li>
+          <li>
+            <Link to={"/about"}>Biz haqimizda</Link>
+          </li>
+        </ul>
         {user ? (
           <div className="flex items-center gap-4">
             <Button size="icon" variant="outline">
@@ -37,7 +46,11 @@ export default function Navbar() {
             </Button>
             <Button variant="outline">
               <Link to={pathname === "/login" ? "/register" : "/login"}>
-                {pathname === "/login" ? "Ro'yxatdan o'tish" : "Kirish"}
+                {pathname === "/login"
+                  ? "Ro'yxatdan o'tish"
+                  : pathname === "/register"
+                  ? "Kirish"
+                  : "Ro'yxatdan o'tish"}
               </Link>
             </Button>
           </div>

@@ -3,8 +3,10 @@ import "./index.css";
 import App from "./App.jsx";
 import { store } from "./states/store.js";
 import { Provider } from "react-redux";
+import { Toaster } from "sonner";
 createRoot(document.getElementById("root")).render(
   <Provider store={store}>
     <App />
+    <Toaster position="top-right" richColors />
   </Provider>
 );
