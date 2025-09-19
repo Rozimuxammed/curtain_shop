@@ -14,11 +14,13 @@ import Navbar from "../components/Navbar";
 import { isValidation } from "../validation";
 import { toast } from "sonner";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setUser } from "../states/auth-slice";
 
 export default function LoginForm() {
-    const [showPassword, setShowPassword] = useState(false);
-
-    function handleSubmit(e) {
+  const [showPassword, setShowPassword] = useState(false);
+  const dispatch = useDispatch();
+  function handleSubmit(e) {
     e.preventDefault();
     const formData = new FormData(e.target);
     const resData = {};
@@ -34,7 +36,8 @@ export default function LoginForm() {
       e.target[target].focus();
       toast.error(message);
     } else {
-      console.log(resData);
+      dispatch(setUser(resData));
+      toast.success("Muvaffaqiyatli kirdingiz!");
       e.target.reset();
     }
   }
@@ -42,8 +45,8 @@ export default function LoginForm() {
   return (
     <>
       <Navbar />
-      <div className="flex items-center justify-center h-screen">
-        <Card className="w-full h-[460px] max-w-sm text-center">
+      <div className="flex h-screen items-center justify-center">
+        <Card className="h-[460px] w-full max-w-sm text-center">
           <CardHeader>
             <CardTitle className="text-2xl font-bold">
               Qaytib kelganingizdan xursandmiz
@@ -54,7 +57,7 @@ export default function LoginForm() {
           </CardHeader>
           <CardContent>
             <form onSubmit={handleSubmit}>
-              <div className="flex flex-col gap-6 mt-10">
+              <div className="mt-10 flex flex-col gap-6">
                 <div className="grid gap-2">
                   <Label htmlFor="email">Email</Label>
                   <Input
@@ -65,7 +68,7 @@ export default function LoginForm() {
                   />
                 </div>
 
-                <div className="grid gap-2 relative">
+                <div className="relative grid gap-2">
                   <div className="flex items-center justify-between">
                     <Label htmlFor="password">Parol</Label>
                     <a
@@ -84,7 +87,7 @@ export default function LoginForm() {
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-3 top-[38px] text-gray-500 hover:text-gray-700"
+                    className="absolute top-[38px] right-3 text-gray-500 hover:text-gray-700"
                   >
                     {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
                   </button>
@@ -93,16 +96,19 @@ export default function LoginForm() {
 
               <Button
                 type="submit"
-                className="w-full cursor-pointer mt-10 bg-[#f67a3d] text-white hover:bg-[#f67a3d] hover:opacity-90"
+                className="mt-10 w-full cursor-pointer bg-[#f67a3d] text-white hover:bg-[#f67a3d] hover:opacity-90"
               >
                 Kirish
               </Button>
-              <div className="text-sm text-muted-foreground mt-4">
-                Akkauntingiz yo'qmi? 
-                <Link to="/register" className="text-blue-500 hover:underline ml-1">
-                 Ro'yxatdan o'tish
+              <div className="text-muted-foreground mt-4 text-sm">
+                Akkauntingiz yo'qmi?
+                <Link
+                  to="/register"
+                  className="ml-1 text-blue-500 hover:underline"
+                >
+                  Ro'yxatdan o'tish
                 </Link>
-        </div>
+              </div>
             </form>
           </CardContent>
         </Card>

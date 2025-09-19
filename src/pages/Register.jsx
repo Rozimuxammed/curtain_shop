@@ -20,7 +20,7 @@ import { setUser } from "../states/auth-slice";
 export default function Register() {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   function hundleSubmit(e) {
     e.preventDefault();
     const formData = new FormData(e.target);
@@ -31,16 +31,15 @@ export default function Register() {
 
     const result = isValidation(resData);
 
-    if(result){
-      const {target,message} = result;
+    if (result) {
+      const { target, message } = result;
       e.target[target].focus();
-      toast.error(message)
-    }else{
+      toast.error(message);
+    } else {
       dispatch(setUser(resData));
+      toast.success("Muvaffaqiyatli kirdingiz!");
       e.target.reset();
     }
-
-
   }
   return (
     <>
@@ -74,7 +73,7 @@ export default function Register() {
                   />
                 </div>
 
-                <div className="grid gap-2 relative">
+                <div className="relative grid gap-2">
                   <Label htmlFor="password">Parol</Label>
                   <Input
                     name="password"
@@ -85,13 +84,13 @@ export default function Register() {
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-3 top-[32px] text-gray-500 hover:text-gray-700"
+                    className="absolute top-[32px] right-3 text-gray-500 hover:text-gray-700"
                   >
                     {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
                   </button>
                 </div>
 
-                <div className="grid gap-2 relative">
+                <div className="relative grid gap-2">
                   <Label htmlFor="confirmPassword">Parolni tasdiqlash</Label>
                   <Input
                     name="confirmPassword"
@@ -101,10 +100,8 @@ export default function Register() {
                   />
                   <button
                     type="button"
-                    onClick={() =>
-                      setShowConfirmPassword(!showConfirmPassword)
-                    }
-                    className="absolute right-3 top-[32px] text-gray-500 hover:text-gray-700"
+                    onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                    className="absolute top-[32px] right-3 text-gray-500 hover:text-gray-700"
                   >
                     {showConfirmPassword ? (
                       <EyeOff size={18} />
@@ -117,14 +114,17 @@ export default function Register() {
 
               <Button
                 type="submit"
-                className="w-full cursor-pointer mt-4 bg-[#f67a3d] text-white hover:bg-[#f67a3d] hover:opacity-90"
+                className="mt-4 w-full cursor-pointer bg-[#f67a3d] text-white hover:bg-[#f67a3d] hover:opacity-90"
               >
                 Ro'yxatdan o'tish
               </Button>
 
-              <div className="text-sm text-muted-foreground mt-3">
+              <div className="text-muted-foreground mt-3 text-sm">
                 Allaqachon akkauntingiz bormi?
-                <Link to="/login" className="text-blue-500 hover:underline ml-1">
+                <Link
+                  to="/login"
+                  className="ml-1 text-blue-500 hover:underline"
+                >
                   Kirish
                 </Link>
               </div>
